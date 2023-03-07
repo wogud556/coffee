@@ -1,4 +1,4 @@
-package com.jay.front.coffee
+package com.jay.front.coffee.activity
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.jay.front.coffee.R
 import com.jay.front.coffee.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

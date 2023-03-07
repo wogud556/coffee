@@ -1,4 +1,4 @@
-package com.jay.front.coffee
+package com.jay.front.coffee.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.jay.front.coffee.R
 import com.jay.front.coffee.databinding.FragmentFirstBinding
 
 /**
