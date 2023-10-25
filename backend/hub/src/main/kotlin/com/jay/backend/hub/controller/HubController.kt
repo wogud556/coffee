@@ -41,7 +41,7 @@ class HubController {
             "login" -> ""
         }
 
-        return "hello"
+        return "hellotest"
     }
 
     //이벤트 목록 요청 혹은 이벤트 참여 관련 데이터 적재
