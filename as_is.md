@@ -1,0 +1,12 @@
+## 모르겠는거 정리
+- ResponseEntity
+  - https://velog.io/@tkppp-dev/SpringBoot-ResonseEntity-%EC%99%80-HTTP-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C-with-Kotlin
+- ExceptionControllerAdvice(왜쓰는지)
+  - https://velog.io/@tkppp-dev/SpringBoot-RestControllerAdvice%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%97%90%EB%9F%AC%EC%B2%98%EB%A6%AC%EB%A5%BC-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%ED%95%B4%EB%B3%B4%EC%9E%90-with-Kotlin
+- JWT + springSecurity
+  - https://junuuu.tistory.com/710
+  - https://junuuu.tistory.com/307
+  - https://velog.io/@dhk22/TIL-Day-71-Kotlin-03-Spring-Security-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0-Jwt%EB%B0%A9%EC%8B%9D-%EC%9D%B8%EC%A6%9D
+- Retrofit(안드 http 통신)
+  - https://stickode.tistory.com/43
+- 
