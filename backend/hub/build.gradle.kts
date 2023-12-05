@@ -24,6 +24,9 @@ dependencies {
 	implementation ("com.google.code.gson:gson:2.8.5")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+	implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
 }
 
 tasks.withType<KotlinCompile> {

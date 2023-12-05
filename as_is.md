@@ -1,6 +1,6 @@
 ## 모르겠는거 정리
 - ResponseEntity
-  - https://velog.io/@tkppp-dev/SpringBoot-ResonseEntity-%EC%99%80-HTTP-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C-with-Kotlin
+  - https://devlog-wjdrbs96.tistory.com/182
 - ExceptionControllerAdvice(왜쓰는지)
   - https://velog.io/@tkppp-dev/SpringBoot-RestControllerAdvice%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%97%90%EB%9F%AC%EC%B2%98%EB%A6%AC%EB%A5%BC-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%ED%95%B4%EB%B3%B4%EC%9E%90-with-Kotlin
 - JWT + springSecurity

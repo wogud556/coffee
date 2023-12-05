@@ -1,14 +1,10 @@
 package com.jay.backend.hub.controller
 
 import com.google.gson.JsonObject
-import com.jay.backend.hub.dto.UserResponse
 import com.jay.backend.hub.service.EventService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpHeaders
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -22,33 +18,24 @@ import org.springframework.web.bind.annotation.RestController
 * 기능 하나에 하나만 구현되도록 수정한다.
 * */
 @RestController
-class UserController {
+class EventController {
 
-    //사용자 정보 요청 시 그리고 로그인관련
-    @PostMapping("/API/user")
-    fun user () : ResponseEntity<Any>{
+    //이벤트 목록 요청 혹은 이벤트 참여 관련 데이터 적재
+    @PostMapping("/API/event")
+    fun event () : String{
         //구분코드
         var downChannel : String? = null;
+        var eventService = EventService(downChannel)
+        var returnData : JsonObject = JsonObject()
 
+        /**/
         when(downChannel){
-            "login" -> ""
-        }
-        var userResponse : UserResponse? = null
-        userResponse?.ResponseData = "hello"
-        return ResponseEntity.ok("{ data : hello }")
-    }
+            //
+            "reward" -> returnData = eventService.reward()
+            "event" -> returnData = eventService.event()
 
-    //사용자 정보 요청 시 그리고 로그인관련
-    @GetMapping("/API/getuser")
-    fun getuser () : String {
-        //구분코드
-        var downChannel : String? = null;
-
-        when(downChannel){
-            "login" -> ""
         }
 
-        return "hellotest"
+        return returnData.asString
     }
-
 }
