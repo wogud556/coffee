@@ -1,29 +1,36 @@
 package com.jay.backend.hub.service
 
-import com.google.gson.JsonObject
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.jay.backend.hub.dto.Menu
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.springframework.stereotype.Service
 
 @Service
-class OrderService {
-    fun callBrand(): JsonObject{
-        val url = URL("http://localhost:8081/menu")
-        val connection = url.openConnection()
+class OrderService (
 
-        connection.doOutput = true
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
-        connection.setRequestProperty("Content-Length", postData.length.toString())
 
-        DataOutputStream(connection.getOutputStream()).use { it.writeBytes(postData) }
-        BufferedReader(InputStreamReader(connection.getInputStream())).use{ bf ->
-            val line: String?
-            while(inp.readLine().also { line = it  != null}) {
-                println(line)
-            }
-        }
-        var json = JsonObject()
-        //여기서 브랜드 목록을 가져오는 Call 요청하기
-        var returnData : JsonObject = json.getAsJsonObject("")
+) {
+    private val okHttpClient: OkHttpClient = OkHttpClient()
+    private val objectMapper: ObjectMapper = ObjectMapper()
+    fun requestJsonPost(request: Menu, flag : String) : String {
+        val requestBody = objectMapper.writeValueAsString(request)
 
-        return returnData
+        val httpResponse = okHttpClient.newCall(
+                Request.Builder()
+                    .url("http://localhost:8082/" + flag)
+                    .post(requestBody.toRequestBody("application/json; charset=utf-8".toMediaType()))
+                    .build()
+            ).execute()
+
+
+        val statusCode : Int = httpResponse.code
+        val responseBody: String ? = httpResponse.body?.string()
+
+        val response = objectMapper.readValue(responseBody, Menu::class.java)
+
+        return response.toString()
     }
 }

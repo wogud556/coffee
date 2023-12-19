@@ -22,10 +22,12 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation ("com.google.code.gson:gson:2.8.5")
+	implementation ("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation ("com.squareup.retrofit2:retrofit:2.9.0")
 	implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+	implementation ("com.squareup.okhttp3:logging-interceptor:3.9.0")
 
 }
 

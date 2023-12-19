@@ -1,13 +1,11 @@
 package com.jay.backend.hub.controller
 
-import com.google.gson.JsonObject
-import com.jay.backend.hub.service.EventService
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Controller
-import org.springframework.ui.Model
+import com.jay.backend.hub.dto.Menu
+import com.jay.backend.hub.service.OrderService
+import org.springframework.core.annotation.Order
 import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import retrofit2.Call
 
 /*
 * 허브 컨트롤러
@@ -21,14 +19,9 @@ import org.springframework.web.bind.annotation.RestController
 class OrderController {
 
     @PostMapping("/API/order")
-    fun order () : String{
-        //구분코드
-        var downChannel : String? = null;
-
-        when(downChannel){
-
-        }
-
-        return "orderChannel"
+    fun order () : String {
+        val menu = Menu(1)
+        val order = OrderService()
+        return order.requestJsonPost(menu, "menu")
     }
 }
