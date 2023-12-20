@@ -17,7 +17,7 @@ class OrderService (
     private val objectMapper: ObjectMapper = ObjectMapper()
     fun requestJsonPost(request: Menu, flag : String) : String {
         val requestBody = objectMapper.writeValueAsString(request)
-
+        println(requestBody.toRequestBody("application/json; charset=utf-8".toMediaType()).toString())
         val httpResponse = okHttpClient.newCall(
                 Request.Builder()
                     .url("http://localhost:8082/" + flag)

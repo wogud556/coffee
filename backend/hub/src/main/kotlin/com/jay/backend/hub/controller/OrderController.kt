@@ -1,7 +1,10 @@
 package com.jay.backend.hub.controller
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.jay.backend.hub.dto.Menu
+import com.jay.backend.hub.service.OrderCallService
 import com.jay.backend.hub.service.OrderService
+import okhttp3.OkHttpClient
 import org.springframework.core.annotation.Order
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
@@ -16,12 +19,15 @@ import retrofit2.Call
 * 기능 하나에 하나만 구현되도록 수정한다.
 * */
 @RestController
-class OrderController {
+class OrderController (
+    private val okHttpClient: OkHttpClient,
+    private val objectMapper: ObjectMapper
+) {
 
     @PostMapping("/API/order")
     fun order () : String {
-        val menu = Menu(1)
-        val order = OrderService()
-        return order.requestJsonPost(menu, "menu")
+        val menu : Menu = Menu("order")
+        val order : OrderCallService = OrderCallService(okHttpClient, objectMapper)
+        return order.requestJsonPost(menu, "menu").toString()
     }
 }
