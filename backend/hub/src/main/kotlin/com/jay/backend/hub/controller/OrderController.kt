@@ -25,9 +25,9 @@ class OrderController (
 ) {
 
     @PostMapping("/API/order")
-    fun order () : String {
-        val menu : Menu = Menu("order")
+    fun order () : String? {
+        val menu : Menu = Menu("STBS")
         val order : OrderCallService = OrderCallService(okHttpClient, objectMapper)
-        return order.requestJsonPost(menu, "menu").toString()
+        return order.requestJsonPost(menu, "menu")
     }
 }

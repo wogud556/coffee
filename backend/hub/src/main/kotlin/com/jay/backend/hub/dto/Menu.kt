@@ -7,5 +7,5 @@ import lombok.Data
 @Data
 @JsonIgnoreProperties
 data class Menu (
-    private var coffeeDivCd : String?,
+   var coffeeDivCd : String?
 )

@@ -24,7 +24,7 @@ class OrderCallService (
                     .build()
             ).execute()
 
-        val responseBody : String? = httpResponse.body?.string()
+        val responseBody : ArrayList<String> = objectMapper.readValue(httpResponse.body?.toString() ,ArrayList<String?>())
 
         println(responseBody)
 

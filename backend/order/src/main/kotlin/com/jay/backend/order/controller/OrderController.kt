@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 * order controller
 * 우선 컨트롤러단에 소스 때려박고서 서비스로 이관하는 작업 진행
 * : ResponseEntity<ProdcutMenuResponse>
+* @RequestParam(required = false) coffeeDivCd : String
 * */
 @RestController
 class OrderController(
@@ -19,8 +20,8 @@ class OrderController(
 {
 
         @PostMapping("/menu")
-        fun order (@RequestParam coffeeDivCd : String) : List<ProdcutMenuResponse> {
-            return orderService.getMenuByCoffeeDivCd(coffeeDivCd)
+        fun order () : List<ProdcutMenuResponse> {
+            return orderService.getMenuByCoffeeDivCd("STBS")
 
         }
 }
