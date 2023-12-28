@@ -1,6 +1,7 @@
 package com.jay.backend.hub.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.google.gson.Gson
 import com.jay.backend.hub.dto.Menu
 import com.jay.backend.hub.service.OrderCallService
 import com.jay.backend.hub.service.OrderService
@@ -19,15 +20,14 @@ import retrofit2.Call
 * 기능 하나에 하나만 구현되도록 수정한다.
 * */
 @RestController
-class OrderController (
-    private val okHttpClient: OkHttpClient,
-    private val objectMapper: ObjectMapper
-) {
+class OrderController () {
 
     @PostMapping("/API/order")
     fun order () : String? {
         val menu : Menu = Menu("STBS")
-        val order : OrderCallService = OrderCallService(okHttpClient, objectMapper)
-        return order.requestJsonPost(menu, "menu")
+        val order = OrderCallService()
+        val returnData = order.requestJsonPostToHttpUrlConnection(menu, "menu")
+        val gson = Gson()
+        return returnData
     }
 }
