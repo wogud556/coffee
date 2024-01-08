@@ -1,36 +1,50 @@
 package com.jay.backend.hub.service
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.google.gson.Gson
 import com.jay.backend.hub.dto.Menu
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.springframework.stereotype.Service
+import java.io.BufferedReader
+import java.io.DataOutputStream
+import java.lang.StringBuilder
+import java.net.HttpURLConnection
+import java.net.URL
 
 @Service
 class OrderService (
 
 
 ) {
-    private val okHttpClient: OkHttpClient = OkHttpClient()
-    private val objectMapper: ObjectMapper = ObjectMapper()
-    fun requestJsonPost(request: Menu, flag : String) : String {
-        val requestBody = objectMapper.writeValueAsString(request)
-        println(requestBody.toRequestBody("application/json; charset=utf-8".toMediaType()).toString())
-        val httpResponse = okHttpClient.newCall(
-                Request.Builder()
-                    .url("http://localhost:8082/" + flag)
-                    .post(requestBody.toRequestBody("application/json; charset=utf-8".toMediaType()))
-                    .build()
-            ).execute()
+    //공통모듈로 써야하는가
+    fun requestJsonPostToHttpUrlConnection(request: Menu, urlFlag : String) : String? {
 
+        val url = "http://localhost:8082/"
+        val urlConn = URL(url + urlFlag)
+        val gson = Gson()
+        val jsonString = gson.toJson(request)
+        val sb = StringBuilder()
+        val huc = urlConn.openConnection() as HttpURLConnection
 
-        val statusCode : Int = httpResponse.code
-        val responseBody: String ? = httpResponse.body?.string()
+        huc.requestMethod = "POST"
+        huc.doOutput = true
+        huc.setRequestProperty("Content-Type", "application/json")
+        huc.setRequestProperty("Accept","application/json")
+        huc.useCaches = false
 
-        val response = objectMapper.readValue(responseBody, Menu::class.java)
-
-        return response.toString()
+        val write = DataOutputStream(huc.outputStream)
+        write.writeBytes(jsonString)
+        write.flush()
+        write.close()
+        val responseCode = huc.responseCode
+        if(responseCode == HttpURLConnection.HTTP_OK) {
+            val returnText = huc.inputStream.bufferedReader().use(BufferedReader::readText)
+            sb.append(returnText)
+        }
+        huc.disconnect()
+        return sb.toString()
     }
 }

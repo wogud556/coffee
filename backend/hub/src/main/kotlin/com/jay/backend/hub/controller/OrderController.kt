@@ -1,15 +1,11 @@
 package com.jay.backend.hub.controller
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.gson.Gson
 import com.jay.backend.hub.dto.Menu
-import com.jay.backend.hub.service.OrderCallService
 import com.jay.backend.hub.service.OrderService
-import okhttp3.OkHttpClient
-import org.springframework.core.annotation.Order
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import retrofit2.Call
 
 /*
 * 허브 컨트롤러
@@ -23,10 +19,11 @@ import retrofit2.Call
 class OrderController () {
 
     @PostMapping("/API/order")
-    fun order () : String? {
-        val menu : Menu = Menu("STBS")
-        val order = OrderCallService()
-        val returnData = order.requestJsonPostToHttpUrlConnection(menu, "menu")
+    fun order (@RequestParam(required = false) coffeeDivCd : String,
+                   @RequestParam(required = false) menuFlag : String) : String? {
+        val menu = Menu(coffeeDivCd)
+        val order = OrderService()
+        val returnData = order.requestJsonPostToHttpUrlConnection(menu, menuFlag)
         val gson = Gson()
         return returnData
     }

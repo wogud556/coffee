@@ -27,4 +27,12 @@ insert into PRODUCT_MENU( MENU_ID,MENU_NAME,MENU_NAME_EN,MENU_FILTER,MENU_FILTER
 - 메뉴id(커피브랜드 2 + 메뉴뷴류3 + 숫자 3자리)
 - 커피브랜드코드(커피 브랜드의 고유값 4자리 ex) STBS = 스타벅스, MGCF = 메가커피)
 - 핫 아이스 구분 (H : only hot, I : only Ice, H/I 둘다)
-- 가능 사이즈(S : Short, T : Tall, G : Grande, V : Venti, R : Trenta, 단 트렌타메뉴는 트렌타 분류로 R로 기재가 되어있기도하며 )
+- 가능 사이즈
+  - S : Short
+  - T : Tall
+  - G : Grande
+  - V : Venti
+  - R : Trenta
+  - 7 : 7oz
+  - O : Solo
+  - D : Doppio
