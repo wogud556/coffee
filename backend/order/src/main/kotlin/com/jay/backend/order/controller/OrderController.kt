@@ -2,6 +2,7 @@ package com.jay.backend.order.controller
 
 import com.jay.backend.order.dto.response.ProdcutMenuResponse
 import com.jay.backend.order.service.OrderService
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -20,8 +21,20 @@ class OrderController(
 {
 
         @PostMapping("/menu")
-        fun order () : List<ProdcutMenuResponse> {
+        fun order (
+            httpRequest: HttpServletRequest
+        ) : List<ProdcutMenuResponse> {
+            println(httpRequest.getParameter("coffeeDivCd"))
             return orderService.getMenuByCoffeeDivCd("STBS")
+
+        }
+
+        @PostMapping("/menuSort")
+        fun orderto (
+            @RequestParam(required = false) coffeeDivCd : String?,
+            @RequestParam(required = false) menuFlag : String?
+        ) : List<ProdcutMenuResponse> {
+            return orderService.getMenuByCoffeeDivCdFilterEn("Teavana", "STBS")
 
         }
 }

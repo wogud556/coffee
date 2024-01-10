@@ -10,6 +10,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.springframework.stereotype.Service
 import java.io.BufferedReader
 import java.io.DataOutputStream
+import java.io.OutputStreamWriter
 import java.lang.StringBuilder
 import java.net.HttpURLConnection
 import java.net.URL
@@ -26,17 +27,24 @@ class OrderService (
         val urlConn = URL(url + urlFlag)
         val gson = Gson()
         val jsonString = gson.toJson(request)
+        println(jsonString.toString())
         val sb = StringBuilder()
+        val request_data = StringBuilder()
+
+        request_data.append("coffeeDivCd").append("=").append(request.coffeeDivCd)
+        println(request_data)
         val huc = urlConn.openConnection() as HttpURLConnection
 
         huc.requestMethod = "POST"
         huc.doOutput = true
         huc.setRequestProperty("Content-Type", "application/json")
         huc.setRequestProperty("Accept","application/json")
+        huc.setRequestProperty("Accept-Language","UTF-8")
+
         huc.useCaches = false
 
-        val write = DataOutputStream(huc.outputStream)
-        write.writeBytes(jsonString)
+        val write = OutputStreamWriter(huc.outputStream)
+        write.write(request_data.toString())
         write.flush()
         write.close()
         val responseCode = huc.responseCode

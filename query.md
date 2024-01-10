@@ -34,5 +34,5 @@ insert into PRODUCT_MENU( MENU_ID,MENU_NAME,MENU_NAME_EN,MENU_FILTER,MENU_FILTER
   - V : Venti
   - R : Trenta
   - 7 : 7oz
-  - O : Solo
-  - D : Doppio
+  - O : Solo(원샷)
+  - D : Doppio(더블샷)

@@ -11,8 +11,26 @@ class OrderService (
     companion object {
 
     }
-    fun getMenuByCoffeeDivCd (coffeedivcd : String) : List<ProdcutMenuResponse> {
+    fun getMenuByCoffeeDivCd (coffeedivcd : String?) : List<ProdcutMenuResponse> {
         val coffeeMenuAll = productMenuRepository.findByCoffeeBrandDivCd(coffeedivcd)
+
+        return coffeeMenuAll.map {
+            ProdcutMenuResponse(
+                menuId = it.menuId,
+                menuName = it.menuName,
+                menuNameEn = it.menuNameEn,
+                menuFilter = it.menuFilter,
+                menuFilterEn = it.menuFilterEn,
+                coffeeBrandDivCd = it.coffeeBrandDivCd,
+                iceHotDivCd = it.iceHotDivCd,
+                enableSize = it.enableSize,
+                price = it.price
+            )
+        }
+    }
+
+    fun getMenuByCoffeeDivCdFilterEn (coffeedivcd : String?, menuFilterEn: String?) : List<ProdcutMenuResponse> {
+        val coffeeMenuAll = productMenuRepository.findByMenuFilterEnAndCoffeeBrandDivCd(coffeedivcd, menuFilterEn)
 
         return coffeeMenuAll.map {
             ProdcutMenuResponse(

@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.jay.backend.hub.dto.Menu
 import com.jay.backend.hub.service.OrderService
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
@@ -16,10 +17,11 @@ import org.springframework.web.bind.annotation.RestController
 * 기능 하나에 하나만 구현되도록 수정한다.
 * */
 @RestController
+@RequestMapping("/API")
 class OrderController () {
 
-    @PostMapping("/API/order")
-    fun order (@RequestParam(required = false) coffeeDivCd : String,
+    @PostMapping("/menu")
+    fun menu (@RequestParam(required = false) coffeeDivCd : String,
                    @RequestParam(required = false) menuFlag : String) : String? {
         val menu = Menu(coffeeDivCd)
         val order = OrderService()
