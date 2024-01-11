@@ -1,12 +1,12 @@
 package com.jay.backend.order.service
 
 import com.jay.backend.order.dto.response.ProdcutMenuResponse
-import com.jay.backend.order.repository.ProductMenuRepository
+import com.jay.backend.order.repository.UserRepository
 import org.springframework.stereotype.Service
 
 @Service
 class OrderService (
-    private val productMenuRepository : ProductMenuRepository
+    private val productMenuRepository : UserRepository
 ) {
     companion object {
 

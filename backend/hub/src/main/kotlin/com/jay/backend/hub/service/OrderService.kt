@@ -21,30 +21,34 @@ class OrderService (
 
 ) {
     //공통모듈로 써야하는가
-    fun requestJsonPostToHttpUrlConnection(request: Menu, urlFlag : String) : String? {
-
+    fun menuRequest(request : HashMap<String, String>) : String? {
+        val parseRequest = Gson()
+        val menu = Menu(request.get("coffeeDivCd"), request.get("filter"))
+        val request_data = StringBuilder()
+        val urlFlag = request.get("urlFlag")
         val url = "http://localhost:8082/"
+
         val urlConn = URL(url + urlFlag)
         val gson = Gson()
-        val jsonString = gson.toJson(request)
+
+        val jsonString = gson.toJson(menu)
         println(jsonString.toString())
         val sb = StringBuilder()
-        val request_data = StringBuilder()
 
-        request_data.append("coffeeDivCd").append("=").append(request.coffeeDivCd)
-        println(request_data)
         val huc = urlConn.openConnection() as HttpURLConnection
 
         huc.requestMethod = "POST"
         huc.doOutput = true
+        huc.doInput = true
+
         huc.setRequestProperty("Content-Type", "application/json")
         huc.setRequestProperty("Accept","application/json")
-        huc.setRequestProperty("Accept-Language","UTF-8")
+        huc.setRequestProperty("Accept-charset","UTF-8")
 
         huc.useCaches = false
 
         val write = OutputStreamWriter(huc.outputStream)
-        write.write(request_data.toString())
+        write.write(jsonString)
         write.flush()
         write.close()
         val responseCode = huc.responseCode

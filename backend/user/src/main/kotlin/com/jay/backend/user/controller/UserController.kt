@@ -3,10 +3,8 @@ package com.jay.backend.order.controller
 import com.jay.backend.order.dto.response.ProdcutMenuResponse
 import com.jay.backend.order.service.OrderService
 import jakarta.servlet.http.HttpServletRequest
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 /*
@@ -16,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 * @RequestParam(required = false) coffeeDivCd : String
 * */
 @RestController
-class OrderController(
+class UserController(
         private val orderService: OrderService
 )
 {

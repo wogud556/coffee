@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 
 
 @Repository
-interface ProductMenuRepository : JpaRepository<ProductMenu, Long> {
+interface UserRepository : JpaRepository<ProductMenu, Long> {
     @Transactional
     fun findByCoffeeBrandDivCd(COFFEE_BRAND_DIV_CD : String?) : List<ProductMenu>
     fun findByCoffeeBrandDivCdAndMenuFilterEn(COFFEE_BRAND_DIV_CD : String?, MENU_FILTER_EN : String?) : List<ProductMenu>

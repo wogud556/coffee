@@ -3,10 +3,7 @@ package com.jay.backend.hub.controller
 import com.google.gson.Gson
 import com.jay.backend.hub.dto.Menu
 import com.jay.backend.hub.service.OrderService
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 /*
 * 허브 컨트롤러
@@ -21,12 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 class OrderController () {
 
     @PostMapping("/menu")
-    fun menu (@RequestParam(required = false) coffeeDivCd : String,
-                   @RequestParam(required = false) menuFlag : String) : String? {
-        val menu = Menu(coffeeDivCd)
-        val order = OrderService()
-        val returnData = order.requestJsonPostToHttpUrlConnection(menu, menuFlag)
-        val gson = Gson()
-        return returnData
+    fun menu (@RequestBody(required = false) requestBody : HashMap<String, String>) : String? {
+        return OrderService().menuRequest(requestBody)
     }
 }
