@@ -1,0 +1,14 @@
+## 모르겠는거 정리
+- ResponseEntity
+  - https://devlog-wjdrbs96.tistory.com/182
+- ExceptionControllerAdvice(왜쓰는지)
+  - https://velog.io/@tkppp-dev/SpringBoot-RestControllerAdvice%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%97%90%EB%9F%AC%EC%B2%98%EB%A6%AC%EB%A5%BC-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%ED%95%B4%EB%B3%B4%EC%9E%90-with-Kotlin
+- JWT + springSecurity
+  - https://junuuu.tistory.com/710
+  - https://junuuu.tistory.com/307
+  - https://velog.io/@dhk22/TIL-Day-71-Kotlin-03-Spring-Security-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0-Jwt%EB%B0%A9%EC%8B%9D-%EC%9D%B8%EC%A6%9D
+- Retrofit(안드 http 통신)
+  - https://stickode.tistory.com/43
+- docker-springboot 배포
+  - https://velog.io/@xeonu/SpringBoot-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-docker%EB%A1%9C-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0
+  - https://velog.io/@sujeongim/%EC%98%A4%EB%A5%98-%EC%B2%9C%EA%B5%AD-Docker%ED%8E%B8-Mac-M1-no-matching-manifest-for-linuxarm64v8
