@@ -21,4 +21,9 @@ class OrderController () {
     fun menu (@RequestBody(required = false) requestBody : HashMap<String, String>) : String? {
         return OrderService().menuRequest(requestBody)
     }
+
+    @PostMapping("/menuFilter")
+    fun menuFilter (@RequestBody(required = false) requestBody : HashMap<String, String>) : String? {
+        return OrderService().menuRequest(requestBody)
+    }
 }

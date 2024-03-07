@@ -26,7 +26,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-
+	compileOnly("org.projectlombok:lombok")
 	//retrofit2
 	implementation ("com.squareup.retrofit2:retrofit:2.7.2")
 	//요청,응답 객체를 파싱해주는 라이브러리(gson을 이용함)
