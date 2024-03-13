@@ -37,5 +37,9 @@ data class ProductMenu (
     var enableSize : String,
 
     @Column(name = "PRICE")
-    var price : Int
+    var price : Int,
+
+    @Column(name = "IMAGE")
+    var image : String
+
 )

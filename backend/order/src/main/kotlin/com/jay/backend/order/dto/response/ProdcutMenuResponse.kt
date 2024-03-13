@@ -21,15 +21,9 @@ data class ProdcutMenuResponse (
     @JsonProperty("menu_filter_en")
     var menuFilterEn : String,
 
-    @JsonProperty("coffee_brand_div_cd")
-    var coffeeBrandDivCd : String,
-
-    @JsonProperty("ice_hot_div_cd")
-    var iceHotDivCd : String,
-
-    @JsonProperty("enable_size")
-    var enableSize : String,
-
     @JsonProperty("price")
-    var price : Int
+    var price : Int,
+
+    @JsonProperty("image")
+    var image : String
 )

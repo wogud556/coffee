@@ -1,5 +1,6 @@
 package com.jay.backend.order.controller
 
+import com.jay.backend.order.dto.response.FilterNmResponse
 import com.jay.backend.order.dto.response.ProdcutMenuResponse
 import com.jay.backend.order.service.OrderService
 import jakarta.servlet.http.HttpServletRequest
@@ -39,5 +40,10 @@ class OrderController(
             println(requestBody)
             return orderService.getMenuByCoffeeDivCdFilterEn(requestBody)
 
+        }
+
+        @PostMapping("/getmenuFilter")
+        fun getMenuFilter() : List<FilterNmResponse> {
+            return orderService.getFilterNm()
         }
 }

@@ -14,6 +14,7 @@ CREATE TABLE PRODUCT_MENU (
     ICE_HOT_DIV_CD varchar(10)
     ENABLE_SIZE varchar(20)
     PRICE number(10)
+    IMAGE CLOB
     constraint product_pk primary key(MENU_ID)
 );
 
