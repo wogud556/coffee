@@ -9,8 +9,7 @@ import '/models/webtoon_episode_model.dart';
 class ApiService {
   static const String baseUrl =
       "https://webtoon-crawler.nomadcoders.workers.dev";
-  static const String menuUrl =
-      "https://96ae-2001-e60-9310-1fd2-941b-e642-d16a-1f00.ngrok-free.app/getmenuFilter";
+  static const String menuUrl = "";
   static const String today = "today";
 
   //pub.dev로 가면 dart의 패키지를 확인할 수 있다.
