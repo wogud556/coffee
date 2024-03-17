@@ -36,8 +36,6 @@ class OrderController(
             httpRequest: HttpServletRequest,
             @RequestBody(required = false) requestBody : HashMap<String, String>,
         ) : List<ProdcutMenuResponse> {
-
-            println(requestBody)
             return orderService.getMenuByCoffeeDivCdFilterEn(requestBody)
 
         }

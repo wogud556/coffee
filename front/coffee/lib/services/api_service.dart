@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import '../models/coffee_menu_filter_model copy.dart';
 import '/models/coffee_menu_filter_model.dart';
 import '/models/webtoon.dart';
 import '/models/webtoon_detail_model.dart';
@@ -54,8 +55,8 @@ class ApiService {
     throw Error();
   }
 
-  static Future<List<CoffeeMenuFIlterModel>> getMenuFilter() async {
-    List<CoffeeMenuFIlterModel> menuFilterInstance = [];
+  static Future<List<CoffeeMenuFilterModel>> getMenuFilter() async {
+    List<CoffeeMenuFilterModel> menuFilterInstance = [];
     final url = Uri.parse(menuUrl);
     final response = await http.post(url);
     print(response.statusCode);
@@ -63,8 +64,32 @@ class ApiService {
       final filters = jsonDecode(utf8.decode(response.bodyBytes));
 
       for (var filter in filters) {
-        menuFilterInstance.add(CoffeeMenuFIlterModel.fromJson(filter));
-        print(CoffeeMenuFIlterModel.fromJson(filter).menuFilter);
+        menuFilterInstance.add(CoffeeMenuFilterModel.fromJson(filter));
+        print(CoffeeMenuFilterModel.fromJson(filter).menuFilter);
+      }
+      return menuFilterInstance;
+    }
+    throw Error();
+  }
+
+  static Future<List<MenuFilterDetailModel>> getMenuFilterDetail(
+      String filterEn, String coffeeDivCd) async {
+    List<MenuFilterDetailModel> menuFilterInstance = [];
+    final url = Uri.parse(menuUrl);
+    Map data = {"coffeeDivCd": coffeeDivCd, "filter": filterEn};
+    var body = json.encode(data);
+    final response = await http.post(
+      url,
+      headers: {"Content-Type": "application/json"},
+      body: body,
+    );
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      final menudetails = jsonDecode(utf8.decode(response.bodyBytes));
+
+      for (var menudetail in menudetails) {
+        menuFilterInstance.add(MenuFilterDetailModel.fromJson(menudetail));
+        print(CoffeeMenuFilterModel.fromJson(menudetail).menuFilter);
       }
       return menuFilterInstance;
     }
