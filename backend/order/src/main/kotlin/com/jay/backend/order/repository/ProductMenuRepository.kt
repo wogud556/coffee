@@ -25,4 +25,7 @@ interface ProductMenuRepository : JpaRepository<ProductMenu, Long> {
     )
     @Transactional
     fun findByRole() : List<ProductMenu>
+
+    fun findByCoffeeBrandDivCdAndMenuId(COFFEE_BRAND_DIV_CD : String?, MENU_ID : String?) : ProductMenu
+
 }

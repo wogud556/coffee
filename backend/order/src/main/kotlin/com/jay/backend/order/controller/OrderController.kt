@@ -1,6 +1,8 @@
 package com.jay.backend.order.controller
 
 import com.jay.backend.order.dto.response.FilterNmResponse
+import com.jay.backend.order.dto.response.MenuDetailResponse
+import com.jay.backend.order.dto.response.ProdcutMenuDetailResponse
 import com.jay.backend.order.dto.response.ProdcutMenuResponse
 import com.jay.backend.order.service.OrderService
 import jakarta.servlet.http.HttpServletRequest
@@ -43,5 +45,13 @@ class OrderController(
         @PostMapping("/getmenuFilter")
         fun getMenuFilter() : List<FilterNmResponse> {
             return orderService.getFilterNm()
+        }
+
+        @PostMapping("/menuDetail")
+        fun getMenuDetail(
+            httpRequest: HttpServletRequest,
+            @RequestBody(required = false) requestBody : HashMap<String, String>,
+        ) : MenuDetailResponse {
+            return orderService.getCoffeeDetail(requestBody)
         }
 }
